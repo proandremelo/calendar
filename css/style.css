@@ -5,3 +5,11 @@ body{
     height: 37em;
     /* border: 1px solid green; */
 }
+
+#calendar{
+    display: grid;
+    height: 70%;
+    width: 45%;
+    border-radius: 2%;
+    border: 1px solid black;
+}
