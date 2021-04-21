@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 body{
     display: flex;
     justify-content: center;
@@ -26,7 +30,26 @@ body{
 
 #grid{
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 10% 90%;
     border-radius: 0 0 2em 2em;
     border-top: 1px solid darkblue;
+}
+
+#week{
+    /* display: flex;
+    justify-content: space-between;
+    padding: 0 0.5em; */
+    display: grid;
+    grid-template-columns: repeat(7, 14.285%);
+}
+
+#week div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#month{
+    display: grid;
+    grid-template-columns: repeat(7, 14.285%);
 }
