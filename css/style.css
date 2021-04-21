@@ -8,8 +8,25 @@ body{
 
 #calendar{
     display: grid;
-    height: 70%;
-    width: 45%;
-    border-radius: 2%;
-    border: 1px solid black;
+    grid-template-rows: 0.2fr 1fr;
+    height: 90%;
+    width: 65%;
+    border-radius: 1.5%;
+    border: 1px solid darkblue;
+    box-shadow: 0 0 1em darkblue;
+}
+
+#nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.8em;
+    border-bottom: 1px solid darkblue;
+}
+
+#grid{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-radius: 0 0 2em 2em;
+    border-top: 1px solid darkblue;
 }
