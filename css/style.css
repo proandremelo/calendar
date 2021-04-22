@@ -12,6 +12,7 @@ body{
 
 #calendar{
     display: grid;
+    overflow: auto;
     grid-template-rows: 0.2fr 1fr;
     height: 90%;
     width: 65%;
@@ -30,7 +31,7 @@ body{
 
 #grid{
     display: grid;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 0.1fr 0.9fr;
     border-radius: 0 0 2em 2em;
     border-top: 1px solid darkblue;
 }
@@ -40,7 +41,7 @@ body{
     justify-content: space-between;
     padding: 0 0.5em; */
     display: grid;
-    grid-template-columns: repeat(7, 14.285%);
+    grid-template-columns: repeat(7, 1fr);
 }
 
 #week div{
@@ -51,5 +52,5 @@ body{
 
 #month{
     display: grid;
-    grid-template-columns: repeat(7, 14.285%);
+    grid-template-columns: repeat(7, 1fr);
 }
