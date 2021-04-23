@@ -1,5 +1,7 @@
+
+
 *{
-    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body{
@@ -29,6 +31,19 @@ body{
     border-bottom: 1px solid darkblue;
 }
 
+#nav input[type="button"]{
+    height: 60%;
+    font-size: 100%;
+    background-color: rgba(0, 38, 255, 40%);
+    /* border-color: rgb(68, 106, 219, 20%); */
+    color: white;
+    border-radius: 15%;
+}
+
+#label-date{
+    font-size: 2em;
+}
+
 #grid{
     display: grid;
     grid-template-rows: 0.1fr 0.9fr;
@@ -37,11 +52,9 @@ body{
 }
 
 #week{
-    /* display: flex;
-    justify-content: space-between;
-    padding: 0 0.5em; */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    font-size: 0.95em;
 }
 
 #week div{
@@ -53,4 +66,17 @@ body{
 #month{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    /* row-gap: 0.1em;
+    column-gap: 0.1em; */
+}
+
+#month div{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 0.8em;
+    text-indent: 0.3em;
+    padding-top: 0.2em;
+    /* background-color: rgba(0, 4, 250,3%); */
+    border: 0.01px solid rgba(0, 0, 0, 0.13);
+    /* border-radius: 5%; */
 }

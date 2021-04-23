@@ -9,11 +9,11 @@ function init(){
     var actualMonth = months[today.getMonth()];
     var actualYear = today.getFullYear();
     document.getElementById("label-date").innerHTML = actualMonth + ", " + actualYear;
-    var daysInCalendar =  document.getElementById("month").querySelectorAll("input");
+    var daysInCalendar =  document.getElementById("month").querySelectorAll("div");
     var thisMonth = new Date(today.getFullYear(),today.getMonth());
     for(let i = 0, day = thisMonth.getDate(), week = thisMonth.getDay();
      i < getAllDaysInAMonth(thisMonth.getMonth(),thisMonth.getFullYear()); i++, day++, week++){
-        daysInCalendar[week].value = day;
+        daysInCalendar[week].innerHTML = day;
     }
 }
 
