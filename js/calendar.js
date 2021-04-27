@@ -97,7 +97,9 @@ document.getElementById("today").addEventListener("click", (evt) => {
     calendar.applyDate(evt, calendar.date);
 });
 document.getElementById("events").addEventListener("click", (evt) => {
-    window.openDialog("../html/test.html");
+    let windowFeatures = "height=500,width=450,left=450,top=150,"+
+    "menubar=no,toolbar=yes,location=yes,status=yes,scrollbars=yes";
+    window.open("../html/test.html","Events",windowFeatures);
 });
 
 var months = document.getElementById("month").querySelectorAll("div");
