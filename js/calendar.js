@@ -9,12 +9,13 @@ function Calendar(){
     this.days = document.getElementById("month").querySelectorAll("div");
 };
 Calendar.prototype.applyDate = function(dateToBeApplied){
-    console.log("Calling applyDate");
+    // console.log("Calling applyDate");
     document.getElementById("label-date").innerHTML = 
         this.months[dateToBeApplied.getMonth()] + ", " + dateToBeApplied.getFullYear();
     dateToBeApplied.setDate(1);
     this.days.forEach(day => day.innerHTML = "");
-    for(let i = 0; i < getAllDaysInAMonth(dateToBeApplied.getFullYear(),dateToBeApplied.getMonth()); i++){
+    let allDaysInAMonth = getAllDaysInAMonth(dateToBeApplied.getFullYear(),dateToBeApplied.getMonth());
+    for(let i = 0; i < allDaysInAMonth; i++){
         this.days[i + dateToBeApplied.getDay()].innerHTML = i + 1;
     };
 };
@@ -41,8 +42,10 @@ function getAllDaysInAMonth(year,month){
         "11" : 31
     };
     if(leapYear(year) && month == 1){
-        return maxDays[month]++;
+        // console.log("Leap Year: " + maxDays[month]++);
+        return maxDays[month]+1;
     }else{
+        // console.log("Normal Year: " + maxDays[month]);
         return maxDays[month];
     }
 }
@@ -83,7 +86,7 @@ document.getElementById("events").addEventListener("click", function(){
 });
 
 var months = document.getElementById("month").querySelectorAll("div");
-console.log(months);
+// console.log(months);
 months.forEach(month => month.addEventListener("click", function(evt){
     if(evt.target.innerHTML != 0){
         window.alert("Day clicked: " + evt.target.innerHTML);
