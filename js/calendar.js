@@ -39,6 +39,11 @@ Calendar.prototype.addEvent = function(){
 
 };
 
+function Event(){
+
+}
+
+
 function getAllDaysInAMonth(year,month){
     let maxDays = {
         "0" : 31,
@@ -71,27 +76,39 @@ function leapYear(year){
     }
 }
 
-var calendar = new Calendar();
-
-window.addEventListener("DOMContentLoaded", (evt) => {
-    calendar.applyDate(evt, calendar.date);
-});
-document.getElementById("backward").addEventListener("click", (evt) => {
+function backward(evt, calendar){
     if(calendar.date.getMonth()-1 == -1){
         calendar.date = new Date(calendar.date.getFullYear()-1, 11);
     }else{
         calendar.date = new Date(calendar.date.getFullYear(), calendar.date.getMonth()-1);
     }
     calendar.applyDate(evt, calendar.date);
-});
-document.getElementById("forward").addEventListener("click", (evt) => {
+}
+
+function forward(evt, calendar){
     if(calendar.date.getMonth()+1 == 12){
         calendar.date = new Date(calendar.date.getFullYear()+1, 0);
     }else{
         calendar.date = new Date(calendar.date.getFullYear(), calendar.date.getMonth()+1);
     }
     calendar.applyDate(evt, calendar.date);
+}
+
+var calendar = new Calendar();
+
+window.addEventListener("wheel", (evt) => {
+    if(evt.deltaY < 0){
+        forward(evt, calendar);
+    }else{
+        backward(evt, calendar);
+    }
 });
+
+window.addEventListener("DOMContentLoaded", (evt) => {
+    calendar.applyDate(evt, calendar.date);
+});
+document.getElementById("backward").addEventListener("click", (evt) => backward(evt, calendar));
+document.getElementById("forward").addEventListener("click", (evt) => forward(evt, calendar));
 document.getElementById("today").addEventListener("click", (evt) => {
     calendar.date = new Date();
     calendar.applyDate(evt, calendar.date);
