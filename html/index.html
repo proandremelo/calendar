@@ -4,9 +4,33 @@
         <meta charset="utf-8">
         <title>Calendar App</title>
         <script src="../js/calendar.js" defer></script>
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/calendar.css">
+        <link rel="stylesheet" href="../css/add-event.css">
     </head>
     <body>
+        <form id="add-event">
+            <div id="title-div">
+                <input type="text" id="title" name="title" value="Add a title"/>
+            </div>
+            <div id="beg-date-div">
+                <input type="text" id="beg-date" name="beg-date" />
+                <button id="beg-time" name="beg-time">Time</button>
+            </div>
+            <div id="end-date-div">
+                <button type="button" id="end-date" name="end-date">End Date</button>
+                <button type="button" id="end-time" name="end-time">Time</button>
+            </div>
+            <div id="address-div">
+                <button type="button" id="address" name="address">Address</button>
+            </div>
+            <div id="desc-div">
+                <textarea id="description">Add a note...</textarea>
+            </div>
+            <div id="buttons-div">
+                <button type="button" id="cancel" name="cancel">Cancel</button>
+                <button type="submit" id="add" name="add">Add</button>
+            </div>
+        </form>
         <div id="calendar">
             <div id="nav">
                 <input class="forward-backward" id="backward" type="button" value="<"/>

@@ -10,11 +10,12 @@ body{
 }
 
 #calendar{
+    /* display: none; */
     display: grid;
     overflow: auto;
     grid-template-rows: 0.2fr 1fr;
-    height: 90%;
-    width: 65%;
+    height: 100%;
+    width: 85%;
     border-radius: 1.5%;
     border: 1px solid darkblue;
     box-shadow: 0 0 1em darkblue;
@@ -88,6 +89,7 @@ body{
 #month div{
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
     font-size: 0.8em;
     text-indent: 0.3em;
     padding-top: 0.2em;

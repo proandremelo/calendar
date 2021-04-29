@@ -1,0 +1,54 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 37em;
+}
+
+#add-event{
+    display: none;
+    height: 70%;
+    width: 30%;
+    padding: 0.7em;
+    border: 0.1em solid black;
+    overflow: auto;
+    z-index: 1;
+    position: absolute;
+    /* display: grid; */
+    grid-template-rows: repeat(6, 1fr);
+    background-color: white;
+}
+
+/* #title-div{
+    
+}
+
+#beg-date-div{
+
+}
+
+#end-date-div{
+
+}
+
+#address-div{
+
+}
+
+#description-div{
+
+} */
+
+#buttons-div{
+    display: flex;
+    justify-content: space-around;
+}
+
+#buttons-div button{
+    height: 80%;
+    width: 40%;
+}

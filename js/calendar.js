@@ -40,7 +40,23 @@ Calendar.prototype.addEvent = function(){
 };
 
 function Event(){
-
+    this.title = document.createElement("input");
+    this.title.type = "text"
+    this.title.id = "title-event";
+    this.title.value = "Add a title...";
+    this.title.style.zIndex = "1";
+    this.title.style.left = "50%";
+    // this.title = function(){
+    //     let input = document.createElement("input");
+    //     input.type = "text";
+    //     input.id = "title-event";
+    //     input.value = "Add a title...";
+    //     return input;
+    // };
+//     this.beginDate = beginDate;
+//     this.endDate = endDate;
+//     this.time = time;
+//     this.address = address;
 }
 
 
@@ -113,16 +129,19 @@ document.getElementById("today").addEventListener("click", (evt) => {
     calendar.date = new Date();
     calendar.applyDate(evt, calendar.date);
 });
-document.getElementById("events").addEventListener("click", (evt) => {
-    let windowFeatures = "height=500,width=450,left=450,top=150,"+
-    "menubar=no,toolbar=yes,location=yes,status=yes,scrollbars=yes";
-    window.open("../html/test.html","Events",windowFeatures);
-});
+// document.getElementById("events").addEventListener("click", (evt) => {
+//     // let windowFeatures = "height=500,width=450,left=450,top=150,"+
+//     // "menubar=no,toolbar=yes,location=yes,status=yes,scrollbars=yes";
+//     // window.open("../html/test.html","Events",windowFeatures);
+//     let ev = new Event();
+//     document.body.insertBefore(ev.title, document.getElementById("calendar"));
+//     console.log(ev.title);
+// });
 
 var months = document.getElementById("month").querySelectorAll("div");
 // console.log(months);
 months.forEach(month => month.addEventListener("click", function(evt){
     if(evt.target.innerHTML != 0){
-        window.alert("Day clicked: " + evt.target.innerHTML);
+        document.getElementById("add-event").style.display = "grid";
     };
 }));
