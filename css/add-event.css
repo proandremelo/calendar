@@ -11,8 +11,8 @@ body{
 
 #add-event{
     display: none;
-    height: 70%;
-    width: 30%;
+    height: 55%;
+    width: 20%;
     padding: 0.7em;
     border: 0.1em solid black;
     overflow: auto;
@@ -21,20 +21,48 @@ body{
     /* display: grid; */
     grid-template-rows: repeat(6, 1fr);
     background-color: white;
+    border-radius: 2%;
 }
 
-/* #title-div{
-    
+#add-event div{
+    display: flex;
+    justify-content: space-between;
 }
 
-#beg-date-div{
-
+#add-event div input, #add-event div button{
+    align-self: center;
 }
 
+#title-div{
+    padding-bottom: 0.5em;
+}
+
+#title{
+    height: 90%;
+    width: 97%;
+    font-size: 2em;
+    text-align: center;
+}
+
+/* #beg-date-div{
+    display: flex;
+    justify-content: space-between;
+} */
+
+#beg-date,#beg-time{
+    align-self: center;
+}
+/* 
 #end-date-div{
+    display: flex;
+    justify-content: space-between;
+} */
 
+#end-date,#end-time{
+    align-self: center;
 }
 
+/*
 #address-div{
 
 }

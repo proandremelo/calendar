@@ -8,13 +8,13 @@
         <link rel="stylesheet" href="../css/add-event.css">
     </head>
     <body>
-        <form id="add-event">
+        <form id="add-event" action="">
             <div id="title-div">
                 <input type="text" id="title" name="title" value="Add a title"/>
             </div>
             <div id="beg-date-div">
                 <input type="text" id="beg-date" name="beg-date" />
-                <button id="beg-time" name="beg-time">Time</button>
+                <button type="button" id="beg-time" name="beg-time">Time</button>
             </div>
             <div id="end-date-div">
                 <button type="button" id="end-date" name="end-date">End Date</button>
@@ -27,7 +27,7 @@
                 <textarea id="description">Add a note...</textarea>
             </div>
             <div id="buttons-div">
-                <button type="button" id="cancel" name="cancel">Cancel</button>
+                <button type="reset" id="cancel" name="cancel" >Cancel</button>
                 <button type="submit" id="add" name="add">Add</button>
             </div>
         </form>

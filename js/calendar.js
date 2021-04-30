@@ -112,7 +112,7 @@ function forward(evt, calendar){
 
 var calendar = new Calendar();
 
-window.addEventListener("wheel", (evt) => {
+document.getElementById("calendar").addEventListener("wheel", (evt) => {
     if(evt.deltaY < 0){
         forward(evt, calendar);
     }else{
@@ -141,7 +141,18 @@ document.getElementById("today").addEventListener("click", (evt) => {
 var months = document.getElementById("month").querySelectorAll("div");
 // console.log(months);
 months.forEach(month => month.addEventListener("click", function(evt){
+    let clickDay = evt;
     if(evt.target.innerHTML != 0){
         document.getElementById("add-event").style.display = "grid";
+        document.body.style.backgroundColor = "gray";
+        document.getElementById("calendar").style.pointerEvents = "none";
+        document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "gray");
     };
 }));
+
+document.getElementById("cancel").addEventListener("click", function(){
+    document.getElementById("add-event").style.display = "none";
+        document.body.style.backgroundColor = "white";
+        document.getElementById("calendar").style.pointerEvents = "auto";
+        document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "white");
+})
