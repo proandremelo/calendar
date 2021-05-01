@@ -144,15 +144,17 @@ months.forEach(month => month.addEventListener("click", function(evt){
     let clickDay = evt;
     if(evt.target.innerHTML != 0){
         document.getElementById("add-event").style.display = "grid";
-        document.body.style.backgroundColor = "gray";
         document.getElementById("calendar").style.pointerEvents = "none";
-        document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "gray");
+        // document.body.style.backgroundColor = "gray";
+        // document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "gray");
     };
+    
 }));
 
 document.getElementById("cancel").addEventListener("click", function(){
     document.getElementById("add-event").style.display = "none";
-        document.body.style.backgroundColor = "white";
-        document.getElementById("calendar").style.pointerEvents = "auto";
-        document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "white");
+    document.body.style.backgroundColor = "white";
+    document.getElementById("calendar").style.pointerEvents = "auto";
+    // document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "white");
+    
 })
