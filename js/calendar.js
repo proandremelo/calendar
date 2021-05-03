@@ -152,10 +152,63 @@ months.forEach(month => month.addEventListener("click", function(evt){
     
 }));
 
+//                       **************     EVENTS OF "ADD-EVENT"   *****************
+
+
+document.getElementById("title").addEventListener("click", function(){
+
+});
+
+document.getElementById("beg-date").addEventListener("click", function(){
+
+});
+
+document.getElementById("beg-time").addEventListener("click", function(){
+
+});
+
+document.getElementById("end-date").addEventListener("click",evt => {
+    let textfield = document.createElement("input");
+    textfield.setAttribute("type", "text");
+    textfield.setAttribute("id", "end-date-after");
+    let endDateDiv = document.getElementById("end-date-div");
+    endDateDiv.insertBefore(textfield, evt.target);
+    endDateDiv.removeChild(evt.target);
+    textfield.style.width = "67%";
+});
+
+document.getElementById("end-time").addEventListener("click", function(){
+});
+
+document.getElementById("address").addEventListener("click", function(){
+    let textfield = document.createElement("input");
+    textfield.setAttribute("type", "text");
+    textfield.setAttribute("id", "address-after");
+    let addressDiv = document.getElementById("address-div");
+    addressDiv.appendChild(textfield);
+    addressDiv.removeChild(this);
+    textfield.style.width = "100%";
+});
+
+document.getElementById("description").addEventListener("click", function(){
+    let textArea = document.createElement("textarea");
+    textArea.setAttribute("id", "desc-after")
+    let descDiv = document.getElementById("desc-div");
+    descDiv.appendChild(textArea);
+    descDiv.removeChild(this);
+    textArea.style.width = "100%";
+});
+
+//Cancel will have to delete all the elements created by the buttons
 document.getElementById("cancel").addEventListener("click", function(){
     document.getElementById("add-event").style.display = "none";
     document.body.style.backgroundColor = "white";
     document.getElementById("calendar").style.pointerEvents = "auto";
     // document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "white");
     
-})
+});
+
+document.getElementById("add").addEventListener("click", function(){
+
+});
+
