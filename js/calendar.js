@@ -113,7 +113,8 @@ function forward(evt, calendar){
 var calendar = new Calendar();
 
 document.getElementById("calendar").addEventListener("wheel", (evt) => {
-    if(evt.deltaY < 0){
+    evt.preventDefault();
+    if(evt.target.deltaY < 0){
         forward(evt, calendar);
     }else{
         backward(evt, calendar);
