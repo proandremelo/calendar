@@ -171,33 +171,29 @@ document.getElementById("end-date").addEventListener("click",evt => {
     let textfield = document.createElement("input");
     textfield.setAttribute("type", "text");
     textfield.setAttribute("id", "end-date-after");
-    let endDateDiv = document.getElementById("end-date-div");
-    endDateDiv.insertBefore(textfield, evt.target);
-    endDateDiv.removeChild(evt.target);
-    textfield.style.width = "67%";
+    let dateDiv = document.getElementById("date-div");
+    dateDiv.insertBefore(textfield, evt.target);
+    dateDiv.removeChild(evt.target);
 });
 
 document.getElementById("end-time").addEventListener("click", function(){
 });
 
-document.getElementById("address").addEventListener("click", function(){
-    let textfield = document.createElement("input");
-    textfield.setAttribute("type", "text");
-    textfield.setAttribute("id", "address-after");
-    let addressDiv = document.getElementById("address-div");
-    addressDiv.appendChild(textfield);
-    addressDiv.removeChild(this);
-    textfield.style.width = "100%";
-});
+// document.getElementById("address").addEventListener("click", function(){
+//     let textfield = document.createElement("input");
+//     textfield.setAttribute("type", "text");
+//     textfield.setAttribute("id", "address-after");
+//     let addressDiv = document.getElementById("address-div");
+//     addressDiv.appendChild(textfield);
+//     addressDiv.removeChild(this);
+//     textfield.style.width = "100%";
+// });
 
-document.getElementById("description").addEventListener("click", function(){
-    let textArea = document.createElement("textarea");
-    textArea.setAttribute("id", "desc-after")
-    let descDiv = document.getElementById("desc-div");
-    descDiv.appendChild(textArea);
-    descDiv.removeChild(this);
-    textArea.style.width = "100%";
-});
+document.getElementById("address").addEventListener("click", evt => buttonToText
+    (evt, "input", "text", "address", "address-div"));
+
+document.getElementById("description").addEventListener("click", evt => buttonToText
+    (evt, "textarea", "", "description", "desc-div"));
 
 //Cancel will have to delete all the elements created by the buttons
 document.getElementById("cancel").addEventListener("click", function(){
@@ -212,3 +208,16 @@ document.getElementById("add").addEventListener("click", function(){
 
 });
 
+function buttonToText(evt, element, elemType, elemId, parentId){
+    let elemToBeCreated = document.createElement(element);
+    elemToBeCreated.setAttribute("id", elemId);
+    try{
+        elemToBeCreated.setAttribute("type", elemType);
+    }catch(e){
+        console.log(e);
+    }
+    let parent = document.getElementById(parentId);
+    parent.appendChild(elemToBeCreated);
+    parent.removeChild(evt.target);
+    elemToBeCreated.style.width = "100%";
+}
