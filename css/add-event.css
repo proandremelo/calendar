@@ -25,9 +25,34 @@
     align-self: center;
 }
 
-#title-div{
-    padding-bottom: 0.5em;
+
+.div-after{
+    display: none;
+    z-index: 2;
+    position: absolute;
+    width: 91%;
+    justify-content: space-between;
+    padding-right: 0;
 }
+
+.input-after{
+    width: 85%;
+}
+
+.cancel-after{
+    background-color: red;
+    color: white !important;
+    width: 10%;
+    border-radius: 20%;
+}
+
+#desc-after{
+    height: 100%;
+}
+
+/* #title-div{
+    padding-bottom: 0.5em;
+} */
 
 #title{
     height: 90%;
@@ -36,20 +61,25 @@
     text-align: center;
 }
 
+#date-div{
+    display: grid;
+    grid-template-columns: 0.7fr 0.3fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 0.5em;
+    margin-top: 1em;
+}
+
+#date-div div{
+    display: flex;
+}
+
 /* #beg-date-div{
     display: flex;
     justify-content: space-evenly;
 } */
 
-#date-div{
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 0.8fr 0.2fr;
-    column-gap: 0.3em;
-}
-
 #beg-date{
-    /* width: 96%; */
+    width: 98%;
     text-align: center;
     font-size: 1em;
     color: black;
@@ -64,22 +94,18 @@
 #beg-date:focus{
     outline: none;
 }
-/* 
+
 #beg-time{
-    width: 28%;
+    width: 100%;
 }
 
 #end-date{
-    width: 70%;
+    width: 100%;
 }
 
 #end-time{
-    width: 28%;
+    width: 100%;
 }
-
-#end-date,#end-time{
-    align-self: center;
-} */
 
 #address{
     width: 100%;

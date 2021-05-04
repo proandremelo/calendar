@@ -163,61 +163,43 @@ document.getElementById("beg-date").addEventListener("click", function(){
 
 });
 
-document.getElementById("beg-time").addEventListener("click", function(){
+document.getElementById("beg-time").addEventListener("click", evt => buttonToText(evt));
 
-});
+document.getElementById("end-date").addEventListener("click", evt => buttonToText(evt));
 
-document.getElementById("end-date").addEventListener("click",evt => {
-    let textfield = document.createElement("input");
-    textfield.setAttribute("type", "text");
-    textfield.setAttribute("id", "end-date-after");
-    let dateDiv = document.getElementById("date-div");
-    dateDiv.insertBefore(textfield, evt.target);
-    dateDiv.removeChild(evt.target);
-});
+document.getElementById("end-time").addEventListener("click", evt => buttonToText(evt));
 
-document.getElementById("end-time").addEventListener("click", function(){
-});
+document.getElementById("address").addEventListener("click", evt => buttonToText(evt));
 
-// document.getElementById("address").addEventListener("click", function(){
-//     let textfield = document.createElement("input");
-//     textfield.setAttribute("type", "text");
-//     textfield.setAttribute("id", "address-after");
-//     let addressDiv = document.getElementById("address-div");
-//     addressDiv.appendChild(textfield);
-//     addressDiv.removeChild(this);
-//     textfield.style.width = "100%";
-// });
-
-document.getElementById("address").addEventListener("click", evt => buttonToText
-    (evt, "input", "text", "address", "address-div"));
-
-document.getElementById("description").addEventListener("click", evt => buttonToText
-    (evt, "textarea", "", "description", "desc-div"));
+document.getElementById("description").addEventListener("click", evt => buttonToText(evt));
 
 //Cancel will have to delete all the elements created by the buttons
 document.getElementById("cancel").addEventListener("click", function(){
     document.getElementById("add-event").style.display = "none";
-    document.body.style.backgroundColor = "white";
-    document.getElementById("calendar").style.pointerEvents = "auto";
-    // document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "white");
-    
+    document.getElementById("calendar").style.pointerEvents = "auto";    
 });
 
 document.getElementById("add").addEventListener("click", function(){
 
 });
 
-function buttonToText(evt, element, elemType, elemId, parentId){
-    let elemToBeCreated = document.createElement(element);
-    elemToBeCreated.setAttribute("id", elemId);
-    try{
-        elemToBeCreated.setAttribute("type", elemType);
-    }catch(e){
-        console.log(e);
-    }
-    let parent = document.getElementById(parentId);
-    parent.appendChild(elemToBeCreated);
-    parent.removeChild(evt.target);
-    elemToBeCreated.style.width = "100%";
+function buttonToText(evt){
+    let btn = evt.target;
+    btn.style.display = "none";
+    let insertDiv = btn.parentElement.querySelector("div");
+    insertDiv.style.display = "flex";
+    let cancel = insertDiv.querySelector("button");
+    cancel.addEventListener("click", function(){
+        btn.style.display = "inline";
+        insertDiv.style.display = "none";
+        let input = {};
+        try{
+            input = insertDiv.querySelector("input");
+            input.value = "";
+        }catch(e){
+            console.log(e);
+            input = insertDiv.querySelector("textarea");
+            input.value = "";
+        }
+    })
 }
