@@ -37,13 +37,13 @@
 }
 
 .input-after{
-    width: 83%;
+    width: 85%;
 }
 
 .cancel-after{
     background-color: red;
     color: white !important;
-    width: 12%;
+    width: 10%;
     border-radius: 20%;
     text-align: center;
     border-left: 0.5em;
