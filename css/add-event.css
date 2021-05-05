@@ -29,21 +29,24 @@
 .div-after{
     display: none;
     z-index: 2;
-    position: absolute;
-    width: 91%;
+    /* position: absolute; */
+    width: 100%;
     justify-content: space-between;
     padding-right: 0;
+    
 }
 
 .input-after{
-    width: 85%;
+    width: 83%;
 }
 
 .cancel-after{
     background-color: red;
     color: white !important;
-    width: 10%;
+    width: 12%;
     border-radius: 20%;
+    text-align: center;
+    border-left: 0.5em;
 }
 
 #desc-after{
@@ -63,20 +66,16 @@
 
 #date-div{
     display: grid;
-    grid-template-columns: 0.7fr 0.3fr;
+    grid-template-columns: 0.6fr 0.4fr;
     grid-template-rows: 1fr 1fr;
     column-gap: 0.5em;
     margin-top: 1em;
 }
 
-#date-div div{
+#beg-date-div{
     display: flex;
+    align-items: center;
 }
-
-/* #beg-date-div{
-    display: flex;
-    justify-content: space-evenly;
-} */
 
 #beg-date{
     width: 98%;
@@ -95,17 +94,58 @@
     outline: none;
 }
 
+#beg-time-div{
+    display: flex;
+    align-items: center;
+}
+
+#beg-time-div .cancel-after{
+    width: 22%;
+}
+
+#beg-time-div .input-after{
+    width: 65%;
+}
+
 #beg-time{
     width: 100%;
+}
+
+#end-date-div{
+    display: flex;
+    align-items: center;
+}
+
+#end-date-div .cancel-after{
+    width: 15%;
+}
+
+#end-date-div .input-after{
+    width: 77%;
 }
 
 #end-date{
     width: 100%;
 }
 
+#end-time-div{
+    display: flex;
+    align-items: center;
+}
+
+#end-time-div .cancel-after{
+    width: 22%;
+}
+
+#end-time-div .input-after{
+    width: 65%;
+}
+
 #end-time{
     width: 100%;
 }
+
+
 
 #address{
     width: 100%;

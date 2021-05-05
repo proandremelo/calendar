@@ -114,7 +114,7 @@ var calendar = new Calendar();
 
 document.getElementById("calendar").addEventListener("wheel", (evt) => {
     evt.preventDefault();
-    if(evt.target.deltaY < 0){
+    if(evt.deltaY < 0){
         forward(evt, calendar);
     }else{
         backward(evt, calendar);
@@ -173,7 +173,7 @@ document.getElementById("address").addEventListener("click", evt => buttonToText
 
 document.getElementById("description").addEventListener("click", evt => buttonToText(evt));
 
-//Cancel will have to delete all the elements created by the buttons
+//Cancel will have to reset all the elements created by the buttons
 document.getElementById("cancel").addEventListener("click", function(){
     document.getElementById("add-event").style.display = "none";
     document.getElementById("calendar").style.pointerEvents = "auto";    
