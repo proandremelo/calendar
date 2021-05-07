@@ -53,10 +53,6 @@
     height: 100%;
 }
 
-/* #title-div{
-    padding-bottom: 0.5em;
-} */
-
 #title{
     height: 90%;
     width: 97%;
@@ -75,57 +71,44 @@
 #beg-date-div{
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
-#beg-date{
-    width: 98%;
+#beg-year{
+    width: 33%;
     text-align: center;
-    font-size: 1em;
-    color: black;
-    border: 0;
-}
-
-#beg-date:hover{
-    background-color: rgba(73, 115, 255, 0.151);
-    border-radius: 1em;
-}
-
-#beg-date:focus{
-    outline: none;
 }
 
 #beg-time-div{
     display: flex;
     align-items: center;
-}
-
-#beg-time-div .cancel-after{
-    width: 22%;
-}
-
-#beg-time-div .input-after{
-    width: 65%;
+    width: 100%;
 }
 
 #beg-time{
     width: 100%;
 }
 
+#beg-time-div .cancel-after{
+    width: 22%;
+}
+
 #end-date-div{
     display: flex;
     align-items: center;
+    width: 100%;
+}
+
+#end-year{
+    width: 40%;
 }
 
 #end-date-div .cancel-after{
     width: 15%;
 }
 
-#end-date-div .input-after{
-    width: 77%;
-}
-
 #end-date{
-    width: 100%;
+    width: 86%;
 }
 
 #end-time-div{
@@ -137,15 +120,9 @@
     width: 22%;
 }
 
-#end-time-div .input-after{
-    width: 65%;
-}
-
 #end-time{
     width: 100%;
 }
-
-
 
 #address{
     width: 100%;

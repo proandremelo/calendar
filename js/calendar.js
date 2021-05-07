@@ -146,6 +146,9 @@ months.forEach(month => month.addEventListener("click", function(evt){
     if(evt.target.innerHTML != 0){
         document.getElementById("add-event").style.display = "grid";
         document.getElementById("calendar").style.pointerEvents = "none";
+        document.getElementById("beg-month").getElementsByTagName("option")[calendar.date.getMonth()].selected = true;
+        document.getElementById("beg-day").getElementsByTagName("option")[evt.target.innerHTML-1].selected = true;
+        document.getElementById("beg-year").value = calendar.date.getFullYear();
         // document.body.style.backgroundColor = "gray";
         // document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "gray");
     };
@@ -159,9 +162,9 @@ document.getElementById("title").addEventListener("click", function(){
 
 });
 
-document.getElementById("beg-date").addEventListener("click", function(){
+// document.getElementById("beg-date").addEventListener("click", function(){
 
-});
+// });
 
 document.getElementById("beg-time").addEventListener("click", evt => buttonToText(evt));
 
@@ -198,8 +201,12 @@ function buttonToText(evt){
             input.value = "";
         }catch(e){
             console.log(e);
-            input = insertDiv.querySelector("textarea");
-            input.value = "";
+            try{
+                input = insertDiv.querySelector("textarea");
+                input.value = "";
+            }catch(e){
+                console.log(e);
+            }
         }
     })
 }
