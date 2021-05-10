@@ -117,14 +117,28 @@ months.forEach(month => month.addEventListener("click", function(evt){
     if(evt.target.innerHTML != 0){
         document.getElementById("add-event").style.display = "grid";
         document.getElementById("calendar").style.pointerEvents = "none";
-        document.getElementById("beg-month").getElementsByTagName("option")[calendar.date.getMonth()].selected = true;
-        document.getElementById("beg-day").getElementsByTagName("option")[evt.target.innerHTML-1].selected = true;
-        document.getElementById("beg-year").value = calendar.date.getFullYear();
-        // document.body.style.backgroundColor = "gray";
-        // document.getElementById("nav").querySelectorAll("input[type=button]").forEach(elem => elem.style.backgroundColor = "gray");
+        begDateValidation(evt);
+        
     };
     
 }));
+//Need to add eventListener onchange on begMonth to change the number of begDays
+function begDateValidation(evt){
+    let begDays = document.getElementById("beg-day").getElementsByTagName("option");
+    let begMonth = document.getElementById("beg-month").getElementsByTagName("option");
+    let begYear = document.getElementById("beg-year");
+    begDays[evt.target.innerHTML-1].selected = true;
+    begMonth[calendar.date.getMonth()].selected = true;
+    begYear.value = calendar.date.getFullYear();
+    begYear.setAttribute("min",begYear.value);
+    begYear.setAttribute("max", begYear.value+10);
+    let daysInTheMonth = getAllDaysInAMonth(calendar.date.getFullYear(),calendar.date.getMonth());
+    // console.log(daysInTheMonth);
+    for(let i = daysInTheMonth;i<begDays.length;i++){
+        // console.log(i);
+        begDays[i].style.display = "none";
+    }
+}
 
 //                       **************     EVENTS OF "ADD-EVENT"   *****************
 
