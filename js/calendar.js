@@ -126,16 +126,38 @@ months.forEach(month => month.addEventListener("click", function(evt){
 function begDateValidation(evt){
     let begDays = document.getElementById("beg-day").getElementsByTagName("option");
     let begMonth = document.getElementById("beg-month").getElementsByTagName("option");
-    let begYear = document.getElementById("beg-year");
+    let begYear = document.getElementById("beg-year").getElementsByTagName("option");
     begDays[evt.target.innerHTML-1].selected = true;
     begMonth[calendar.date.getMonth()].selected = true;
-    begYear.value = calendar.date.getFullYear();
-    begYear.setAttribute("min",begYear.value);
-    begYear.setAttribute("max", begYear.value+10);
+    setAllowedYears(begYear, calendar.date.getFullYear());
+    setAllowedMonths(begMonth, calendar.date.getMonth());
     let daysInTheMonth = getAllDaysInAMonth(calendar.date.getFullYear(),calendar.date.getMonth());
-    // console.log(daysInTheMonth);
-    for(let i = daysInTheMonth;i<begDays.length;i++){
-        // console.log(i);
+    setAllowedDays(begDays, daysInTheMonth);    
+    // document.getElementById("beg-year").addEventListener("change", evt => {
+    //     console.log(document.getElementById("beg-month").value);
+    //     setAllowedDays(begDays, getAllDaysInAMonth(evt.target.value, document.getElementById("beg-month").value)); 
+    // });
+    // document.getElementById("beg-month").addEventListener("change", evt => {
+    //     console.log(document.getElementById("beg-year").value);
+    //     console.log(evt.target.value);
+    //     setAllowedDays(begDays, getAllDaysInAMonth(document.getElementById("beg-year").value, evt.target.value)); 
+    // });
+}
+
+function setAllowedYears(begYear, selectedYear){
+    for(let i = 0; i<begYear.length;i++){
+        begYear[i].innerHTML = selectedYear + i;
+    };
+}
+
+function setAllowedMonths(begMonth, seletedMonth){
+    for(let i = seletedMonth; i > 0; i--){
+        begMonth[i-1].style.display = "none";
+    };
+}
+
+function setAllowedDays(begDays, selectedDays){
+    for(let i = selectedDays;i<begDays.length;i++){
         begDays[i].style.display = "none";
     }
 }
