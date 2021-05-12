@@ -157,7 +157,7 @@ function begDateValidation(evt){
 
 function setAllowedYears(begYear, selectedYear){
     for(let i = 0; i<begYear.length;i++){
-        begYear[i].innerHTML = selectedYear + i;
+        begYear[i].innerHTML = parseInt(selectedYear, 10) + i;
     };
 }
 
@@ -202,33 +202,38 @@ document.getElementById("cancel").addEventListener("click", function(){
 
 function buttonToText(evt){
     let btn = evt.target;
+    if(btn.id == "end-date"){
+        setAllowedYears(document.getElementById("end-year").getElementsByTagName("option"), document.getElementById("beg-year").value);
+    }
     btn.style.display = "none";
     let insertDiv = btn.parentElement.querySelector("div");
     insertDiv.style.display = "flex";
     let cancel = insertDiv.querySelector("button");
-    cancel.addEventListener("click", function(){
-        btn.style.display = "inline";
-        insertDiv.style.display = "none";
-        let input = {};
+    cancel.addEventListener("click", () => resetCancelAfter(btn, insertDiv));
+}
+
+function resetCancelAfter(button, parent){
+    button.style.display = "inline";
+    parent.style.display = "none";
+    let input = {};
+    try{
+        input = parent.querySelector("input");
+        input.value = "";
+    }catch(e){
+        console.log(e);
         try{
-            input = insertDiv.querySelector("input");
+            input = parent.querySelector("textarea");
             input.value = "";
         }catch(e){
             console.log(e);
-            try{
-                input = insertDiv.querySelector("textarea");
-                input.value = "";
-            }catch(e){
-                console.log(e);
-                try {
-                    input = insertDiv.getElementsByTagName("select");
-                    for(let i = 0; i < input.length; i++){
-                        input[i].getElementsByTagName("option")[0].selected = true;
-                    }
-                } catch (e) {
-                    console.log(e);
+            try {
+                input = parent.getElementsByTagName("select");
+                for(let i = 0; i < input.length; i++){
+                    input[i].getElementsByTagName("option")[0].selected = true;
                 }
+            } catch (e) {
+                console.log(e);
             }
         }
-    })
+    }
 }

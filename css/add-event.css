@@ -71,11 +71,12 @@
 #beg-date-div{
     display: flex;
     align-items: center;
+    column-gap: 0.09em;
     width: 100%;
 }
 
 #beg-year{
-    width: 33%;
+    width: 35%;
     text-align: center;
 }
 
@@ -100,7 +101,7 @@
 }
 
 #end-year{
-    width: 40%;
+    width: 35%;
 }
 
 #end-date-div .cancel-after{
@@ -114,6 +115,7 @@
 #end-time-div{
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 #end-time-div .cancel-after{
