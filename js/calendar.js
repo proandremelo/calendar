@@ -118,7 +118,6 @@ months.forEach(month => month.addEventListener("click", function(evt){
         document.getElementById("add-event").style.display = "grid";
         document.getElementById("calendar").style.pointerEvents = "none";
         begDateValidation(evt);
-        
     };
     
 }));
@@ -177,11 +176,7 @@ function setAllowedDays(begDays, selectedDays){
 //                       **************     EVENTS OF "ADD-EVENT"   *****************
 
 
-document.getElementById("title").addEventListener("click", function(){
-
-});
-
-// document.getElementById("beg-date").addEventListener("click", function(){
+// document.getElementById("title").addEventListener("click", function(){
 
 // });
 
@@ -201,9 +196,9 @@ document.getElementById("cancel").addEventListener("click", function(){
     document.getElementById("calendar").style.pointerEvents = "auto";    
 });
 
-document.getElementById("add").addEventListener("click", function(){
+// document.getElementById("add").addEventListener("click", function(){
 
-});
+// });
 
 function buttonToText(evt){
     let btn = evt.target;
@@ -225,6 +220,14 @@ function buttonToText(evt){
                 input.value = "";
             }catch(e){
                 console.log(e);
+                try {
+                    input = insertDiv.getElementsByTagName("select");
+                    for(let i = 0; i < input.length; i++){
+                        input[i].getElementsByTagName("option")[0].selected = true;
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
             }
         }
     })
