@@ -133,15 +133,27 @@ function begDateValidation(evt){
     setAllowedMonths(begMonth, calendar.date.getMonth());
     let daysInTheMonth = getAllDaysInAMonth(calendar.date.getFullYear(),calendar.date.getMonth());
     setAllowedDays(begDays, daysInTheMonth);    
-    // document.getElementById("beg-year").addEventListener("change", evt => {
-    //     console.log(document.getElementById("beg-month").value);
-    //     setAllowedDays(begDays, getAllDaysInAMonth(evt.target.value, document.getElementById("beg-month").value)); 
-    // });
-    // document.getElementById("beg-month").addEventListener("change", evt => {
-    //     console.log(document.getElementById("beg-year").value);
-    //     console.log(evt.target.value);
-    //     setAllowedDays(begDays, getAllDaysInAMonth(document.getElementById("beg-year").value, evt.target.value)); 
-    // });
+    document.getElementById("beg-year").addEventListener("change", evt => {
+        if(evt.target.value > calendar.date.getFullYear()){
+            for(let i = 0; i < begMonth.length; i++){
+                begMonth[i].style.display = "inline";
+            }
+        }else{
+            setAllowedMonths(begMonth, calendar.date.getMonth());
+        }
+        if((document.getElementById("beg-month").value-1) < 10){
+            setAllowedDays(begDays, getAllDaysInAMonth(evt.target.value, document.getElementById("beg-month").value[1]-1));
+        }else{
+            setAllowedDays(begDays, getAllDaysInAMonth(evt.target.value, document.getElementById("beg-month").value-1)); 
+        }
+    });
+    document.getElementById("beg-month").addEventListener("change", evt => {
+        if((evt.target.value-1) < 10){
+            setAllowedDays(begDays, getAllDaysInAMonth(document.getElementById("beg-year").value, evt.target.value[1]-1)); 
+        }else{
+            setAllowedDays(begDays, getAllDaysInAMonth(document.getElementById("beg-year").value, evt.target.value-1)); 
+        }
+    });
 }
 
 function setAllowedYears(begYear, selectedYear){
