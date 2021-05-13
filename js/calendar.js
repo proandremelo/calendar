@@ -79,15 +79,6 @@ function leapYear(year){
     }
 }
 
-// function backward(evt, calendar){
-//     if(calendar.date.getMonth()-1 == -1){
-//         calendar.date = new Date(calendar.date.getFullYear()-1, 11);
-//     }else{
-//         calendar.date = new Date(calendar.date.getFullYear(), calendar.date.getMonth()-1);
-//     }
-//     calendar.applyDate(evt, calendar.date);
-// }
-
 var calendar = new Calendar();
 
 document.getElementById("calendar").addEventListener("wheel", (evt) => {
@@ -109,17 +100,26 @@ document.getElementById("today").addEventListener("click", (evt) => {
     calendar.applyDate(evt, calendar.date);
 });
 
-var months = document.getElementById("month").querySelectorAll("div");
-// console.log(months);
-months.forEach(month => month.addEventListener("click", function(evt){
-    let clickDay = evt;
+// var months = document.getElementById("month").querySelectorAll("div");
+// // console.log(months);
+// months.forEach(month => month.addEventListener("click", function(evt){
+//     if(evt.target.innerHTML != 0){
+//         document.getElementById("add-event").style.display = "grid";
+//         document.getElementById("calendar").style.pointerEvents = "none";
+//         begDateValidation(evt);
+//     };
+    
+// }));
+
+document.getElementById("month").addEventListener("click", function(evt){
     if(evt.target.innerHTML != 0){
         document.getElementById("add-event").style.display = "grid";
         document.getElementById("calendar").style.pointerEvents = "none";
         begDateValidation(evt);
     };
     
-}));
+});
+
 //Need to add eventListener onchange on begMonth to change the number of begDays
 function begDateValidation(evt){
     let begDays = document.getElementById("beg-day").getElementsByTagName("option");
@@ -132,13 +132,13 @@ function begDateValidation(evt){
     let daysInTheMonth = getAllDaysInAMonth(calendar.date.getFullYear(),calendar.date.getMonth());
     setAllowedDays(begDays, daysInTheMonth);    
     document.getElementById("beg-year").addEventListener("change", evt => {
-        if(evt.target.value > calendar.date.getFullYear()){
-            for(let i = 0; i < begMonth.length; i++){
-                begMonth[i].style.display = "inline";
-            }
-        }else{
-            setAllowedMonths(begMonth, calendar.date.getMonth());
-        }
+        // if(evt.target.value > calendar.date.getFullYear()){
+        //     for(let i = 0; i < begMonth.length; i++){
+        //         begMonth[i].style.display = "inline";
+        //     }
+        // }else{
+        //     setAllowedMonths(begMonth, calendar.date.getMonth());
+        // }
         if((document.getElementById("beg-month").value-1) < 10){
             setAllowedDays(begDays, getAllDaysInAMonth(evt.target.value, document.getElementById("beg-month").value[1]-1));
         }else{
@@ -154,17 +154,17 @@ function begDateValidation(evt){
     });
 }
 
-function setAllowedYears(begYear, selectedYear){
-    for(let i = 0; i<begYear.length;i++){
-        begYear[i].innerHTML = parseInt(selectedYear, 10) + i;
-    };
-}
+// function setAllowedYears(begYear, selectedYear){
+//     for(let i = 0; i<begYear.length;i++){
+//         begYear[i].innerHTML = parseInt(selectedYear, 10) + i;
+//     };
+// }
 
-function setAllowedMonths(begMonth, seletedMonth){
-    for(let i = seletedMonth; i > 0; i--){
-        begMonth[i-1].style.display = "none";
-    };
-}
+// function setAllowedMonths(begMonth, seletedMonth){
+//     for(let i = seletedMonth; i > 0; i--){
+//         begMonth[i-1].style.display = "none";
+//     };
+// }
 
 function setAllowedDays(begDays, selectedDays){
     for(let i = selectedDays;i<begDays.length;i++){
