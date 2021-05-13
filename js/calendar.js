@@ -1,5 +1,3 @@
-
-
 function Calendar(){
     this.date = new Date();
     this.months = ["January", "February", "March",
@@ -32,11 +30,21 @@ Calendar.prototype.applyDate = function(evt, dateToBeApplied){
         this.days[i + dateToBeApplied.getDay()].innerHTML = i + 1;
     };
 };
-Calendar.prototype.events = function(){
-    
+Calendar.prototype.forward = function(evt){
+    if(this.date.getMonth()+1 == 12){
+        this.date = new Date(this.date.getFullYear()+1, 0);
+    }else{
+        this.date = new Date(this.date.getFullYear(), this.date.getMonth()+1);
+    }
+    this.applyDate(evt, this.date);
 };
-Calendar.prototype.addEvent = function(){
-
+Calendar.prototype.backward = function(evt){
+    if(this.date.getMonth()-1 == -1){
+        this.date = new Date(this.date.getFullYear()-1, 11);
+    }else{
+        this.date = new Date(this.date.getFullYear(), this.date.getMonth()-1);
+    }
+    this.applyDate(evt, this.date);
 };
 
 function getAllDaysInAMonth(year,month){
@@ -71,40 +79,31 @@ function leapYear(year){
     }
 }
 
-function backward(evt, calendar){
-    if(calendar.date.getMonth()-1 == -1){
-        calendar.date = new Date(calendar.date.getFullYear()-1, 11);
-    }else{
-        calendar.date = new Date(calendar.date.getFullYear(), calendar.date.getMonth()-1);
-    }
-    calendar.applyDate(evt, calendar.date);
-}
-
-function forward(evt, calendar){
-    if(calendar.date.getMonth()+1 == 12){
-        calendar.date = new Date(calendar.date.getFullYear()+1, 0);
-    }else{
-        calendar.date = new Date(calendar.date.getFullYear(), calendar.date.getMonth()+1);
-    }
-    calendar.applyDate(evt, calendar.date);
-}
+// function backward(evt, calendar){
+//     if(calendar.date.getMonth()-1 == -1){
+//         calendar.date = new Date(calendar.date.getFullYear()-1, 11);
+//     }else{
+//         calendar.date = new Date(calendar.date.getFullYear(), calendar.date.getMonth()-1);
+//     }
+//     calendar.applyDate(evt, calendar.date);
+// }
 
 var calendar = new Calendar();
 
 document.getElementById("calendar").addEventListener("wheel", (evt) => {
     evt.preventDefault();
     if(evt.deltaY < 0){
-        forward(evt, calendar);
+        calendar.forward(evt);
     }else{
-        backward(evt, calendar);
+        calendar.backward(evt);
     }
 });
 
 window.addEventListener("DOMContentLoaded", (evt) => {
     calendar.applyDate(evt, calendar.date);
 });
-document.getElementById("backward").addEventListener("click", (evt) => backward(evt, calendar));
-document.getElementById("forward").addEventListener("click", (evt) => forward(evt, calendar));
+document.getElementById("backward").addEventListener("click", (evt) => calendar.backward(evt));
+document.getElementById("forward").addEventListener("click", (evt) => calendar.forward(evt));
 document.getElementById("today").addEventListener("click", (evt) => {
     calendar.date = new Date();
     calendar.applyDate(evt, calendar.date);
@@ -172,6 +171,38 @@ function setAllowedDays(begDays, selectedDays){
         begDays[i].style.display = "none";
     }
 }
+
+// function EventValidator(){
+
+// };
+
+// function Title(){
+
+// };
+
+// function BegDate(){
+
+// };
+
+// function BegTime(){
+
+// };
+
+// function EndDate(){
+
+// };
+
+// function EndTime(){
+
+// };
+
+// function Address(){
+    
+// };
+
+// function Description(){
+
+// };
 
 //                       **************     EVENTS OF "ADD-EVENT"   *****************
 
