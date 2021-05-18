@@ -1,6 +1,10 @@
 import {Calendar} from "./calendar.js";
+import {BegTime} from "./event.js";
+import {EndDate} from "./event.js";
+import {EndTime} from "./event.js";
+import {Address} from "./event.js";
+import {Description} from "./event.js";
 import {setAllowedDays} from "./support-functions.js";
-import {buttonToText} from "./support-functions.js";
 import {getAllDaysInAMonth} from "./support-functions.js";
 
 var calendar = new Calendar();
@@ -64,22 +68,15 @@ function begDateValidation(evt){
     });
 };
 
-//                       **************     EVENTS OF "ADD-EVENT"   *****************
+var begTime = new BegTime();
 
+var endDate = new EndDate();
 
-// document.getElementById("title").addEventListener("click", function(){
+var endTime = new EndTime();
 
-// });
+var address = new Address();
 
-document.getElementById("beg-time").addEventListener("click", evt => buttonToText(evt));
-
-document.getElementById("end-date").addEventListener("click", evt => buttonToText(evt));
-
-document.getElementById("end-time").addEventListener("click", evt => buttonToText(evt));
-
-document.getElementById("address").addEventListener("click", evt => buttonToText(evt));
-
-document.getElementById("description").addEventListener("click", evt => buttonToText(evt));
+var description = new Description();
 
 //Cancel will have to reset all the elements created by the buttons
 document.getElementById("cancel").addEventListener("click", function(){

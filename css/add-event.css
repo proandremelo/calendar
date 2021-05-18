@@ -76,7 +76,6 @@
 
 #beg-year{
     width: 33%;
-    text-align: center;
 }
 
 #beg-time-div{
@@ -96,6 +95,7 @@
 #end-date-div{
     display: flex;
     align-items: center;
+    justify-content: stretch !important;
     width: 100%;
 }
 
