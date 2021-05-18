@@ -71,12 +71,11 @@
 #beg-date-div{
     display: flex;
     align-items: center;
-    column-gap: 0.09em;
     width: 100%;
 }
 
 #beg-year{
-    width: 35%;
+    width: 33%;
     text-align: center;
 }
 

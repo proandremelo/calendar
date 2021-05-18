@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>Calendar App</title>
-        <script src="../js/calendar.js" defer></script>
+        <!-- <script src="../js/calendar.js" type="module" defer></script> -->
+        <script src="../js/index.js" type="module" defer></script>
+        <!-- <script src="../js/support-functions.js" type="module" defer></script> -->
         <link rel="stylesheet" href="../css/calendar.css">
         <link rel="stylesheet" href="../css/add-event.css">
     </head>
@@ -61,18 +63,7 @@
                         <option>30</option>
                         <option>31</option>
                     </select>
-                    <select id="beg-year" name="beg-year">
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
+                    <input type="number" id="beg-year" name="beg-year"/>
                 </div>
                 <div id="beg-time-div">
                     <div class="div-after">
@@ -218,18 +209,7 @@
                             <option>30</option>
                             <option>31</option>
                         </select>
-                        <select id="end-year" name="end-year">
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                        </select>
+                        <input type="number" id="end-year" name="end-year">
                         <button type="button" class="cancel-after" name="cancel-after">X</button>
                     </div>
                     <button type="button" id="end-date" name="end-date">End Date</button>
