@@ -43,6 +43,9 @@ function begDateValidation(evt){
     let daysInTheMonth = getAllDaysInAMonth(calendar.date.getFullYear(),calendar.date.getMonth());
     setAllowedDays(begDays, daysInTheMonth);    
     document.getElementById("beg-year").addEventListener("input", evt => {
+        console.log(evt.target.value);
+        console.log(document.getElementById("beg-month").value-1);
+        console.log(getAllDaysInAMonth(evt.target.value, document.getElementById("beg-month").value[1]-1));
         if((document.getElementById("beg-month").value-1) < 10){
             setAllowedDays(begDays, getAllDaysInAMonth(evt.target.value, document.getElementById("beg-month").value[1]-1));
         }else{
@@ -50,6 +53,9 @@ function begDateValidation(evt){
         }
     });
     document.getElementById("beg-month").addEventListener("change", evt => {
+        console.log(evt.target.value-1);
+        console.log(document.getElementById("beg-year").value);
+        console.log(getAllDaysInAMonth(document.getElementById("beg-year").value, evt.target.value[1]-1));
         if((evt.target.value-1) < 10){
             setAllowedDays(begDays, getAllDaysInAMonth(document.getElementById("beg-year").value, evt.target.value[1]-1)); 
         }else{

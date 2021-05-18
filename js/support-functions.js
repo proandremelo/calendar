@@ -31,8 +31,12 @@ function leapYear(year){
 };
 
 export function setAllowedDays(begDays, selectedDays){
-    for(let i = selectedDays;i<begDays.length;i++){
-        begDays[i].style.display = "none";
+    for(let i = 0, j = selectedDays;i<31;i++){
+        if(i < j){
+            begDays[i].style.display = "inline";
+        }else{
+            begDays[i].style.display = "none";
+        }
     }
 };
 
