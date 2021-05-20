@@ -1,3 +1,4 @@
+import {getAllDaysInAMonth, setAllowedDays} from "./support-functions";
 
 function Event(title, begDate){
     this.title = title;
@@ -42,6 +43,12 @@ export function EndDate(){
         this.insertDiv.querySelector("#end-month")[0].selected = true;
         this.insertDiv.style.display = "none";
         this.button.style.display = "inline";
+    });
+    this.insertDiv.querySelector("#end-month").addEventListener("change", (evt) => {
+        setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(this.insertDiv.querySelector("#end-year").value, evt.target.value))
+    });
+    this.insertDiv.querySelector("#end-year").addEventListener("change", () => {
+        setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(evt.target.value, this.insertDiv.querySelector("#end-month").value))
     });
 };
 
