@@ -1,4 +1,4 @@
-import {getAllDaysInAMonth, setAllowedDays} from "./support-functions";
+import {getAllDaysInAMonth, setAllowedDays} from "./support-functions.js";
 
 function Event(title, begDate){
     this.title = title;
@@ -45,10 +45,18 @@ export function EndDate(){
         this.button.style.display = "inline";
     });
     this.insertDiv.querySelector("#end-month").addEventListener("change", (evt) => {
-        setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(this.insertDiv.querySelector("#end-year").value, evt.target.value))
+        if((evt.target.value-1) < 10){
+            setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(this.insertDiv.querySelector("#end-year").value, evt.target.value[1]-1)); 
+        }else{
+            setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(this.insertDiv.querySelector("#end-year").value, evt.target.value-1)); 
+        }        
     });
-    this.insertDiv.querySelector("#end-year").addEventListener("change", () => {
-        setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(evt.target.value, this.insertDiv.querySelector("#end-month").value))
+    this.insertDiv.querySelector("#end-year").addEventListener("input", () => {
+        if((this.insertDiv.querySelector("#end-month").value-1) < 10){
+            setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(evt.target.value, this.insertDiv.querySelector("#end-month").value[1]-1));
+        }else{
+            setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(evt.target.value, this.insertDiv.querySelector("#end-month").value-1)); 
+        }
     });
 };
 
