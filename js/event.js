@@ -9,10 +9,24 @@ function Title(){
     this.name = document.querySelector("#title");
 };
 
-function BegDate(){
+export function BegDate(){
     this.begDay = document.querySelector("#beg-day");
     this.begMonth = document.querySelector("#beg-month");
     this.begYear = document.querySelector("#beg-year");
+    this.begMonth.addEventListener("change", evt => {
+        if((evt.target.value-1) < 10){
+            setAllowedDays(this.begDay, getAllDaysInAMonth(this.begYear.value, evt.target.value[1]-1)); 
+        }else{
+            setAllowedDays(this.begDay, getAllDaysInAMonth(this.begYear.value, evt.target.value-1)); 
+        }      
+    });
+    this.begYear.addEventListener("input", evt => {
+        if((this.begMonth.value-1) < 10){
+            setAllowedDays(this.begDay, getAllDaysInAMonth(evt.target.value, this.begMonth.value[1]-1));
+        }else{
+            setAllowedDays(this.begDay, getAllDaysInAMonth(evt.target.value, this.begMonth.value-1)); 
+        }
+    })
 };
 
 export function BegTime(){
