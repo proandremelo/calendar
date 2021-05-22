@@ -1,12 +1,5 @@
 import {Calendar} from "./calendar.js";
-import {BegDate} from "./event.js";
-import {BegTime} from "./event.js";
-import {EndDate} from "./event.js";
-import {EndTime} from "./event.js";
-import {Address} from "./event.js";
-import {Description} from "./event.js";
-import {setAllowedDays} from "./support-functions.js";
-import {getAllDaysInAMonth} from "./support-functions.js";
+import {Event} from "./event.js";
 
 var calendar = new Calendar();
 
@@ -33,23 +26,10 @@ document.getElementById("month").addEventListener("click", function(evt){
     if(evt.target.innerHTML != 0){
         document.getElementById("add-event").style.display = "grid";
         document.getElementById("calendar").style.pointerEvents = "none";
-        // begDateValidation(evt);
-
-        let begDate = new BegDate();
-
-        begDate.begDay[evt.target.textContent-1].selected = true ;
-        begDate.begMonth[calendar.date.getMonth()].selected = true;
-        begDate.begYear.value = calendar.date.getFullYear();
-
-        let begTime = new BegTime();
-
-        let endDate = new EndDate();
-
-        let endTime = new EndTime();
-
-        let address = new Address();
-
-        let description = new Description();
+        let event = new Event();
+        event.begDate.begDay[evt.target.textContent-1].selected = true ;
+        event.begDate.begMonth[calendar.date.getMonth()].selected = true;
+        event.begDate.begYear.value = calendar.date.getFullYear();
     };
     
 });

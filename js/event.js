@@ -1,15 +1,20 @@
 import {getAllDaysInAMonth, setAllowedDays} from "./support-functions.js";
 
-function Event(title, begDate){
-    this.title = title;
-    this.begDate = begDate;
+export function Event(){
+    this.title = new Title();
+    this.begDate = new BegDate();
+    this.begTime = new BegTime();
+    this.endDate = new EndDate();
+    this.endTime = new EndTime();
+    this.address = new Address();
+    this.description = new Description();
 };
 
 function Title(){
     this.name = document.querySelector("#title");
 };
 
-export function BegDate(){
+function BegDate(){
     this.begDay = document.querySelector("#beg-day");
     this.begMonth = document.querySelector("#beg-month");
     this.begYear = document.querySelector("#beg-year");
@@ -29,7 +34,7 @@ export function BegDate(){
     })
 };
 
-export function BegTime(){
+function BegTime(){
     this.button = document.querySelector("#beg-time");
     this.insertDiv = document.querySelector("#beg-time-after");
     this.button.addEventListener("click", () => {
@@ -44,7 +49,7 @@ export function BegTime(){
     });
 };
 
-export function EndDate(){
+function EndDate(){
     this.button = document.querySelector("#end-date");
     this.insertDiv = document.querySelector("#end-date-after");
     this.button.addEventListener("click", () => {
@@ -65,7 +70,7 @@ export function EndDate(){
             setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(this.insertDiv.querySelector("#end-year").value, evt.target.value-1)); 
         }        
     });
-    this.insertDiv.querySelector("#end-year").addEventListener("input", () => {
+    this.insertDiv.querySelector("#end-year").addEventListener("input", (evt) => {
         if((this.insertDiv.querySelector("#end-month").value-1) < 10){
             setAllowedDays(this.insertDiv.querySelector("#end-day"), getAllDaysInAMonth(evt.target.value, this.insertDiv.querySelector("#end-month").value[1]-1));
         }else{
@@ -75,7 +80,7 @@ export function EndDate(){
 };
 
 
-export function EndTime(){
+function EndTime(){
     this.button = document.querySelector("#end-time");
     this.insertDiv = document.querySelector("#end-time-after");
     this.button.addEventListener("click", () => {
@@ -90,7 +95,7 @@ export function EndTime(){
     });
 };
 
-export function Address(){
+function Address(){
     this.button = document.querySelector("#address");
     this.insertDiv = document.querySelector("#address-div-after");
     this.button.addEventListener("click", () => {
@@ -104,7 +109,7 @@ export function Address(){
     });
 };
 
-export function Description(){
+function Description(){
     this.button = document.querySelector("#description");
     this.insertDiv = document.querySelector("#desc-div-after");
     this.button.addEventListener("click", () => {
