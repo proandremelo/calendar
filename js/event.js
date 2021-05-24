@@ -127,6 +127,10 @@ function Description(){
 
 function Cancel() {
     this.button = document.querySelector("#cancel");
+    this.button.addEventListener("click", evt => {
+        let cancelButtons = document.querySelectorAll(".cancel-after");
+        cancelButtons.forEach(btn => btn.click());
+    })
 };
 
 function Add(){
