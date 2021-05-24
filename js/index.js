@@ -2,8 +2,9 @@ import {Calendar} from "./calendar.js";
 import {Event} from "./event.js";
 
 var calendar = new Calendar();
+var $ = document.querySelector.bind(document);
 
-document.getElementById("calendar").addEventListener("wheel", (evt) => {
+$("#calendar").addEventListener("wheel", (evt) => {
     evt.preventDefault();
     if(evt.deltaY < 0){
         calendar.forward(evt);
@@ -15,17 +16,17 @@ document.getElementById("calendar").addEventListener("wheel", (evt) => {
 window.addEventListener("DOMContentLoaded", (evt) => {
     calendar.applyDate(evt, calendar.date);
 });
-document.getElementById("backward").addEventListener("click", (evt) => calendar.backward(evt));
-document.getElementById("forward").addEventListener("click", (evt) => calendar.forward(evt));
-document.getElementById("today").addEventListener("click", (evt) => {
+$("#backward").addEventListener("click", (evt) => calendar.backward(evt));
+$("#forward").addEventListener("click", (evt) => calendar.forward(evt));
+$("#today").addEventListener("click", (evt) => {
     calendar.date = new Date();
     calendar.applyDate(evt, calendar.date);
 });
 
-document.getElementById("month").addEventListener("click", function(evt){
+$("#month").addEventListener("click", function(evt){
     if(evt.target.innerHTML != 0){
-        document.getElementById("add-event").style.display = "grid";
-        document.getElementById("calendar").style.pointerEvents = "none";
+        $("#add-event").style.display = "grid";
+        $("#calendar").style.pointerEvents = "none";
         let event = new Event();
         event.begDate.begDay[evt.target.textContent-1].selected = true ;
         event.begDate.begMonth[calendar.date.getMonth()].selected = true;

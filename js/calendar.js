@@ -1,21 +1,23 @@
 import {getAllDaysInAMonth} from "./support-functions.js";
 
+let $ = document.querySelector.bind(document);
+
 export function Calendar(){
     this.date = new Date();
     this.months = ["January", "February", "March",
     "April", "May", "June", "July",
     "August", "September", "October",
     "November", "December"];
-    this.days = document.getElementById("month").querySelectorAll("div");
-    // this.actualDay = this.days[this.date.getDay() + this.date.getDate() - 1];
+    this.days = $("#month").querySelectorAll("div");
     this.actualDay = this.date.getDate();
     this.actualDayPosition = 0;
-    this.actualWeekDay = this.date.getDay();
+    // this.actualWeekDay = this.date.getDay();
     this.actualMonth = this.date.getMonth();
     this.actualYear = this.date.getFullYear();
+    
 };
 Calendar.prototype.applyDate = function(evt, dateToBeApplied){
-    document.getElementById("label-date").innerHTML = 
+    $("#label-date").innerHTML = 
         this.months[dateToBeApplied.getMonth()] + ", " + dateToBeApplied.getFullYear();
     dateToBeApplied.setDate(1);
     if(evt.type == "DOMContentLoaded" || evt.target.id == "today" || 

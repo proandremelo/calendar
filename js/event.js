@@ -1,5 +1,7 @@
 import {getAllDaysInAMonth, setAllowedDays} from "./support-functions.js";
 
+let $ = document.querySelector.bind(document);
+
 export function Event(){
     this.title = new Title();
     this.begDate = new BegDate();
@@ -13,13 +15,13 @@ export function Event(){
 };
 
 function Title(){
-    this.name = document.querySelector("#title");
+    this.name = $("#title");
 };
 
 function BegDate(){
-    this.begDay = document.querySelector("#beg-day");
-    this.begMonth = document.querySelector("#beg-month");
-    this.begYear = document.querySelector("#beg-year");
+    this.begDay = $("#beg-day");
+    this.begMonth = $("#beg-month");
+    this.begYear = $("#beg-year");
     this.begMonth.addEventListener("change", evt => {
         if((evt.target.value-1) < 10){
             setAllowedDays(this.begDay, getAllDaysInAMonth(this.begYear.value, evt.target.value[1]-1)); 
@@ -37,8 +39,8 @@ function BegDate(){
 };
 
 function BegTime(){
-    this.button = document.querySelector("#beg-time");
-    this.insertDiv = document.querySelector("#beg-time-after");
+    this.button = $("#beg-time");
+    this.insertDiv = $("#beg-time-after");
     this.button.addEventListener("click", () => {
         this.button.style.display = "none";
         this.insertDiv.style.display = "flex";
@@ -52,12 +54,12 @@ function BegTime(){
 };
 
 function EndDate(){
-    this.button = document.querySelector("#end-date");
-    this.insertDiv = document.querySelector("#end-date-after");
+    this.button = $("#end-date");
+    this.insertDiv = $("#end-date-after");
     this.button.addEventListener("click", () => {
         this.button.style.display = "none";
         this.insertDiv.style.display = "flex";
-        this.insertDiv.querySelector("#end-year").value = document.querySelector("#beg-year").value;
+        this.insertDiv.querySelector("#end-year").value = $("#beg-year").value;
     });
     this.insertDiv.querySelector(".cancel-after").addEventListener("click", () => {
         this.insertDiv.querySelector("#end-day")[0].selected = true;
@@ -83,8 +85,8 @@ function EndDate(){
 
 
 function EndTime(){
-    this.button = document.querySelector("#end-time");
-    this.insertDiv = document.querySelector("#end-time-after");
+    this.button = $("#end-time");
+    this.insertDiv = $("#end-time-after");
     this.button.addEventListener("click", () => {
         this.button.style.display = "none";
         this.insertDiv.style.display = "flex";
@@ -98,8 +100,8 @@ function EndTime(){
 };
 
 function Address(){
-    this.button = document.querySelector("#address");
-    this.insertDiv = document.querySelector("#address-div-after");
+    this.button = $("#address");
+    this.insertDiv = $("#address-div-after");
     this.button.addEventListener("click", () => {
         this.button.style.display = "none";
         this.insertDiv.style.display = "flex";
@@ -112,8 +114,8 @@ function Address(){
 };
 
 function Description(){
-    this.button = document.querySelector("#description");
-    this.insertDiv = document.querySelector("#desc-div-after");
+    this.button = $("#description");
+    this.insertDiv = $("#desc-div-after");
     this.button.addEventListener("click", () => {
         this.button.style.display = "none";
         this.insertDiv.style.display = "flex";
@@ -126,15 +128,15 @@ function Description(){
 };
 
 function Cancel() {
-    this.button = document.querySelector("#cancel");
+    this.button = $("#cancel");
     this.button.addEventListener("click", evt => {
         let cancelButtons = document.querySelectorAll(".cancel-after");
         cancelButtons.forEach(btn => btn.click());
-        document.querySelector("#add-event").style.display = "none";
-        document.querySelector("#calendar").style.pointerEvents = "auto";
+        $("#add-event").style.display = "none";
+        $("#calendar").style.pointerEvents = "auto";
     })
 };
 
 function Add(){
-    this.button = document.querySelector("#add");
+    this.button = $("#add");
 }
