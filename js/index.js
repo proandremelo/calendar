@@ -33,13 +33,3 @@ document.getElementById("month").addEventListener("click", function(evt){
     };
     
 });
-
-//Cancel will have to reset all the elements created by the buttons
-document.getElementById("cancel").addEventListener("click", function(){
-    document.getElementById("add-event").style.display = "none";
-    document.getElementById("calendar").style.pointerEvents = "auto";    
-});
-
-// document.getElementById("add").addEventListener("click", function(){
-
-// });

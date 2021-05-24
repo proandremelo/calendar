@@ -130,6 +130,8 @@ function Cancel() {
     this.button.addEventListener("click", evt => {
         let cancelButtons = document.querySelectorAll(".cancel-after");
         cancelButtons.forEach(btn => btn.click());
+        document.querySelector("#add-event").style.display = "none";
+        document.querySelector("#calendar").style.pointerEvents = "auto";
     })
 };
 
