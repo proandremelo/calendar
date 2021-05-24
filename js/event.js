@@ -8,6 +8,8 @@ export function Event(){
     this.endTime = new EndTime();
     this.address = new Address();
     this.description = new Description();
+    this.Cancel = new Cancel();
+    this.add = new Add();
 };
 
 function Title(){
@@ -122,3 +124,11 @@ function Description(){
         this.button.style.display = "inline";
     });
 };
+
+function Cancel() {
+    this.button = document.querySelector("#cancel");
+};
+
+function Add(){
+    this.button = document.querySelector("#add");
+}
