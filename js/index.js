@@ -1,5 +1,5 @@
-import {Calendar} from "./calendar.js";
-import {Event} from "./event.js";
+import {Calendar} from "./Calendar.js";
+import {Event} from "./Event.js";
 
 var calendar = new Calendar();
 var $ = document.querySelector.bind(document);
