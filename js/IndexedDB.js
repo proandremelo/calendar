@@ -1,22 +1,65 @@
-let request = window.indexedDB.open("Events", 1);
-let database = {};
- 
-request.addEventListener("success", () => {
-    database = request.result;
-    console.log("request: " + request);
-    console.log("database: " + database);
-});
+class dbORM{
 
-request.addEventListener("error", () => {
-    console.log("error: " + request.errorCode);
-});
+    constructor(database, version){
+        this._request = window.indexedDB.open(database, version);
+        request.addEventListener("success", () => {
+            console.log("Success: " + request);
+            console.log("Result: " + request.result);
+        });
+        
+        request.addEventListener("error", () => {
+            console.log("error: " + request.errorCode);
+        });
+            
+        request.addEventListener("upgradeneeded", (evt) => {
+            let db = evt.target.result;
+            db.createObjectStore("Events", {keyPath: "id", autoincrement: true});
+            console.log(db);
+    
+        });
+    }
 
-let dadosEvento = {title: "Walk with the dog", begDate: "2021-05-28"};
+}
+function connect(database, version){
+    let request = window.indexedDB.open(database, version);
+    
+    request.addEventListener("success", () => {
+        console.log("Success: " + request);
+        console.log("Result: " + request.result);
+    });
+    
+    request.addEventListener("error", () => {
+        console.log("error: " + request.errorCode);
+    });
+        
+    request.addEventListener("upgradeneeded", (evt) => {
+        let db = evt.target.result;
+        db.createObjectStore("Events", {keyPath: "id", autoincrement: true});
+        console.log(db);
 
-request.addEventListener("upgradeneeded", (evt) => {
-    let db = evt.target.result;
-    console.log("db: " + db);    
-});
+    });
+}
+
+function add(title, begDate){
+    let db = connect("Events", 1);
+    let transaction = db.result.transaction("ev", "readwrite");
+
+    transaction.addEventListener("complete", () => {
+        console.log("Transction Completed Successfully.");
+    })
+
+    transaction.addEventListener("error", () => {
+        console.log("An error occurred.");
+    })
+
+}
+
+add("asdas", "asdasdas");
+
+// connect("Events", 1);
+
+// window.indexedDB.deleteDatabase("Events");
+
 
 // let DBDeleteRequest = window.indexedDB.deleteDatabase("Events");
 
